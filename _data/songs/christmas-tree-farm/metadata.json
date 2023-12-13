@@ -1,3 +1,8 @@
 {
-	"tidalEmbedUrl": "https://embed.tidal.com/tracks/124685104?layout=gridify"
+	"urls": {
+		"last.fm": "https://www.last.fm/music/Taylor+Swift/Christmas+Tree+Farm/Christmas+Tree+Farm",
+		"Tidal": "https://tidal.com/browse/track/124685104",
+		"Spotify": "https://open.spotify.com/track/2mvabkN1i2gLnGAPUVdwek?si=09c8e2854de54fa0",
+		"YouTube": "https://www.youtube.com/watch?v=mN3rDTAdM2o"
+	}
 }

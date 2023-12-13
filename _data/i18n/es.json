@@ -1,13 +1,12 @@
 {
 	"site": {
-		"title": "Taylor Swift Superfanático Sitio Web"
+		"title": "Sitio web súper fan"
 	},
 	"languages": {
 		"en": "Inglés",
 		"es": "Español"
 	},
-	"home": {
-		"songs": "Canciones",
-		"languageswap": "También disponible en:"
-	}
+	"songs": "Canciones",
+	"languageswap": "También disponible en",
+	"listen": "Traducir en"
 }

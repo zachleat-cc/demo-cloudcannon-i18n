@@ -1,0 +1,33 @@
+/* Heading! */
+.demo-hed-title {
+	font-family: Libre Bodoni, var(--demo-font-family, system-ui, sans-serif);
+	text-transform: uppercase;
+	font-size: 2.73em;
+	line-height: 1.2;
+}
+@media (min-width: 48em) { /* 768px */
+	.demo-hed-title {
+		font-size: 4.75em;
+	}
+}
+.demo-hed-title b,
+.demo-hed-title a[href] {
+	display: block;
+	font-size: .6em;
+	line-height: 1.5;
+}
+
+/* Language Chooser */
+.demo-main {
+	font-size: 1.125em; /* 18px /16 */
+}
+
+/* Song Chooser */
+.song-chooser {
+	text-align: center;
+	font-weight: bold;
+}
+.song-chooser img {
+	max-width: 20em;
+	margin-bottom: .5em;
+}

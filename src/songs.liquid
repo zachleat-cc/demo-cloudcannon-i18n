@@ -8,17 +8,24 @@ pagination:
   # See `before` in `songs.11tydata.js`
 eleventyComputed:
   lang: "{{ song.language }}"
+  albumArtUrl: "https://v1.opengraph.11ty.dev/{{ song.urls.Spotify | url_encode }}/opengraph/"
   metadata:
-    title: "{{ song.title }} — Taylor Swift"
+    title: "Taylor Swift: {{ song.title }}"
+    titleHtml: "<a href='{{ song.slug }}'>Taylor Swift</a><span>{{ song.title }}</span>"
     cta:
       url: "{{ song.slug }}"
-      text: "{{ 'home.songs' | i18n }}"
+      text: "{{ 'songs' | i18n }}"
 tags: songs
 permalink: "{{ song.slug }}{{ song.title | slugify }}/"
 ---
-{% if song.tidalEmbedUrl %}
-<div style="max-width: 30em; margin: 0 auto;"><div style="position: relative; padding-bottom: 100%; height: 0; overflow: hidden; max-width: 100%;"><iframe src="{{ song.tidalEmbedUrl }}" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 1px; min-height: 100%; margin: 0 auto;"></iframe></div></div>
-{% endif %}
+{%- if song.urls %}
+<ul class="demo-inline demo-mb2">
+	<li><strong>{{ 'listen' | i18n }}</strong></li>
+	{%- for url in song.urls %}
+	<li><a href="{{ url[1] }}"><img alt="Favicon for {{ url[1] }}" loading="lazy" decoding="async" src="https://v1.indieweb-avatar.11ty.dev/{{ url[1] | url_encode }}/" width="40" height="40" class="demo-icon demo-icon-rounded">{{ url[0] }}</a></li>
+	{%- endfor %}
+</ul>
+{%- endif %}
 
 <pre>
 {{ song.lyrics }}

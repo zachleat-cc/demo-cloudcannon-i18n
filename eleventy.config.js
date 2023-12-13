@@ -26,7 +26,7 @@ module.exports = async function(eleventyConfig) {
 
 	// Components
 	eleventyConfig.addPassthroughCopy({
-		"./public/*": "/",
+		"./public/*": "/public/",
 	});
 
 	// Server
