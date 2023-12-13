@@ -3,7 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "description": "A historical record of foundational web development blog posts.",
-  "type": "module",
   "scripts": {
     "mount": "cp -R ../demo-cloudcannon-marketing-components/_includes/marketing-components src/_includes/",
     "start": "npm run mount && npx @11ty/eleventy --serve",
