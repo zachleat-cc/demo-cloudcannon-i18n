@@ -1,0 +1,18 @@
+---
+layout: marketing-components/base.liquid
+---
+<h2>{{ "home.languages" | i18n }}</h2>
+
+{% assign links = page.url | locale_links %}
+<ul>
+{%- for link in links %}
+{%- unless forloop.first %},{% endunless %}
+{% capture originalLanguage %}{{ "languages." | append: link.lang | i18n: link.lang }}{% endcapture %}
+{% capture translatedLanguage %}{{ "languages." | append: link.lang | i18n }}{% endcapture %}
+  <li><a href="{{link.url}}" lang="{{link.lang}}" hreflang="{{link.lang}}">{{ originalLanguage }}</a>{% if link.lang != page.lang %} <em>({{ translatedLanguage }})</em>{% endif %}</li>
+{%- endfor -%}
+</ul>
+
+<hr>
+
+{{ content }}

@@ -1,0 +1,13 @@
+{
+	"site": {
+		"title": "Taylor Swift Superfan Web Site"
+	},
+	"languages": {
+		"en": "English",
+		"es": "Spanish"
+	},
+	"home": {
+		"songs": "Songs",
+		"languages": "Languages"
+	}
+}
