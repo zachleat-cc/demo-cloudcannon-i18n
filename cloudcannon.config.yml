@@ -1,0 +1,16 @@
+paths:
+  uploads: uploads
+  static: ''
+  collections: ''
+  data: _data
+  layouts: _includes
+  includes: _includes
+collections_config: {}
+_enabled_editors:
+  - data
+_inputs: {}
+_select_data: {}
+_structures: {}
+_editables: {}
+data_config: {}
+timezone: US/Central
