@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#npm cache clean --force
+npm install github:11ty/eleventy#main
