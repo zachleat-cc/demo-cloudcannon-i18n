@@ -1,7 +1,7 @@
 {
   "name": "taylor-swift",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A historical record of foundational web development blog posts.",
   "scripts": {
     "mount": "cp -R ../demo-cloudcannon-marketing-components/_includes/marketing-components src/_includes/",
