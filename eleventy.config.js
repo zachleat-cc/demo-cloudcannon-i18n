@@ -3,21 +3,20 @@ const rosetta = require("rosetta");
 
 const siteMountedConfig = require("./src/_includes/marketing-components/eleventySharedConfig.cjs");
 
-const DEFAULT_LANGUAGE = "en";
+const LANGUAGES = ["en", "es"];
 
 module.exports = async function(eleventyConfig) {
 	const { EleventyI18nPlugin } = await import("@11ty/eleventy");
 
-	// used on index pages
-	// TODO use _data/i18n/*
-	eleventyConfig.addGlobalData("languages", ["en", "es"]);
+	// used on index.md song pages
+	eleventyConfig.addGlobalData("languages", LANGUAGES);
 
 	eleventyConfig.addPlugin(EleventyI18nPlugin, {
-		defaultLanguage: DEFAULT_LANGUAGE,
+		defaultLanguage: LANGUAGES[0],
 	});
 
 	eleventyConfig.addFilter("i18n", function (key, langOverride) {
-		let lang = this.page?.lang || this.ctx?.page?.lang || this.context?.environments?.page?.lang || DEFAULT_LANGUAGE;
+		let lang = this.page?.lang || this.ctx?.page?.lang || this.context?.environments?.page?.lang || LANGUAGES[0];
 		let strs = this.ctx?.i18n || this.context?.environments?.i18n || {};
 		let extraData = {}; // for later
 		const i18n = rosetta(strs);

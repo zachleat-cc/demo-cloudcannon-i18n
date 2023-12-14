@@ -17,10 +17,11 @@
 	line-height: 1.5;
 }
 
-/* Language Chooser */
 .demo-main {
 	font-size: 1.125em; /* 18px /16 */
 }
+/* Language Chooser */
+/* .language-chooser {} */
 
 /* Song Chooser */
 .song-chooser {
@@ -33,4 +34,11 @@
 .song-chooser img {
 	width: 100%;
 	margin-bottom: .5em;
+}
+
+.song-album-art {
+	display: block;
+	max-width: 20em;
+	margin: 1em auto 2em;
+	border-radius: 1em;
 }

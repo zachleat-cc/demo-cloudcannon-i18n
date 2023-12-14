@@ -9,8 +9,8 @@ metadata:
 ---
 {% assign links = page.url | locale_links %}
 <div class="language-chooser demo-mb2">
+	<div><strong>{{ "languageswap" | i18n }}:</strong></div>
 	<ul class="demo-inline">
-		<li><strong>{{ "languageswap" | i18n }}</strong></li>
 		{%- for link in links %}
 		{%- unless forloop.first %},{% endunless %}
 		{%- capture originalLanguage %}{{ "languages." | append: link.lang | i18n: link.lang }}{% endcapture %}

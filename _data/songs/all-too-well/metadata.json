@@ -1,6 +1,8 @@
 {
 	"urls": {
-		"Spotify": "https://open.spotify.com/track/3nsfB1vus2qaloUdcBZvDu?si=e4b4c1d8d6da4d28",
-		"YouTube": "https://www.youtube.com/watch?v=sRxrwjOtIag"
+		"Spotify": "https://open.spotify.com/track/5enxwA8aAbwZbf5qCHORXi",
+		"YouTube": "https://www.youtube.com/watch?v=sRxrwjOtIag",
+		"Tidal": "https://tidal.com/browse/track/204609730",
+		"last.fm": "https://www.last.fm/music/Taylor+Swift/_/All+Too+Well+(10+Minute+Version)+(Taylor%27s+Version)+(From+the+Vault)"
 	}
 }
