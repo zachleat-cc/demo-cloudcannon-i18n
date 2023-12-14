@@ -12,6 +12,7 @@ metadata:
 <is-land on:media="(prefers-reduced-motion: no-preference)">
 	<snow-fall count="200"></snow-fall>
 </is-land>
+<script type="module" src="/public/pagefind-search.js"></script>
 {% assign links = page.url | locale_links %}
 <div class="language-chooser demo-mb2">
 	<div><strong>{{ "languageswap" | i18n }}:</strong></div>
@@ -26,3 +27,10 @@ metadata:
 </div>
 
 {{ content }}
+
+<div class="search">
+	<h2>{{ "search" | i18n }}</h2>
+	<is-land on:idle on:visible>
+		<pagefind-search></pagefind-search>
+	</is-land>
+</div>

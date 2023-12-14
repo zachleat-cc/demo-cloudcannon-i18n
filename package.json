@@ -6,7 +6,8 @@
   "scripts": {
     "mount": "cp -R ../demo-cloudcannon-marketing-components/_includes/marketing-components src/_includes/",
     "start": "npm run mount && npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy"
+    "build": "npx @11ty/eleventy",
+    "search-index": "npx -y pagefind --site _site"
   },
   "author": {
     "name": "Zach Leatherman",
@@ -20,9 +21,11 @@
   "devDependencies": {
     "@11ty/eleventy": "github:11ty/eleventy#main",
     "js-yaml": "^4.1.0",
+    "pagefind": "^1.0.4",
     "rosetta": "^1.1.0"
   },
   "dependencies": {
-    "@11ty/is-land": "^4.0.0"
+    "@11ty/is-land": "^4.0.0",
+    "@zachleat/pagefind-search": "^1.0.3"
   }
 }
