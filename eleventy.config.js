@@ -33,6 +33,7 @@ module.exports = async function(eleventyConfig) {
 	eleventyConfig.setServerOptions({
 		domDiff: false,
 	});
+	eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
 	// Liquid
 	eleventyConfig.setLiquidOptions({

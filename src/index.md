@@ -15,7 +15,7 @@ permalink: "{% if lang != 'en' %}/{{ lang }}/{% else %}/{% endif %}"
 ---
 ## {{ "songs" | i18n }}
 
-<div class="demo-inline song-chooser">
+<div class="song-chooser">
 {%- for song in collections.songs %}
   {%- if song.data.song.language == lang %}
     <a href="{{ song.url }}">
