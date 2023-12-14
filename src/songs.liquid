@@ -8,7 +8,7 @@ pagination:
   # See `before` in `songs.11tydata.js`
 eleventyComputed:
   lang: "{{ song.language }}"
-  albumArtUrl: "https://v1.opengraph.11ty.dev/{{ song.urls.Spotify | url_encode }}/opengraph/"
+  albumArtUrl: "https://v1.opengraph.11ty.dev/{{ song.urls.Spotify | url_encode }}/opengraph/jpeg/"
   metadata:
     title: "Taylor Swift: {{ song.title }}"
     titleHtml: "<a href='{{ song.slug }}'>Taylor Swift</a><span>{{ song.title }}</span>"
@@ -27,7 +27,7 @@ permalink: "{{ song.slug }}{{ song.title | slugify }}/"
 </ul>
 {%- endif %}
 
-<img src="{{ albumArtUrl }}" width="640" height="640" alt="Album Art for {{ song.title }}" class="song-album song-album--page">
+<img src="{{ albumArtUrl }}" width="640" height="640" alt="Album Art for {{ song.title }}" class="song-album song-album--page" loading="eager" decoding="async">
 
 <pre>{{ song.lyrics }}</pre>
 
