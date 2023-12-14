@@ -26,6 +26,7 @@ module.exports = async function(eleventyConfig) {
 	// Components
 	eleventyConfig.addPassthroughCopy({
 		"./public/*": "/public/",
+		"./node_modules/@11ty/is-land/is-land.js": "/public/is-land.js",
 	});
 
 	// Server

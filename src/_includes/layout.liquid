@@ -6,7 +6,12 @@ metadata:
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/style.css">
+    <script type="module" src="/public/is-land.js"></script>
+    <script type="module" src="/public/snow.js"></script>
 ---
+<is-land on:media="(prefers-reduced-motion: no-preference)">
+	<snow-fall count="200"></snow-fall>
+</is-land>
 {% assign links = page.url | locale_links %}
 <div class="language-chooser demo-mb2">
 	<div><strong>{{ "languageswap" | i18n }}:</strong></div>
