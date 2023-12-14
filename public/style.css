@@ -36,9 +36,11 @@
 	margin-bottom: .5em;
 }
 
-.song-album-art {
-	display: block;
-	max-width: 20em;
-	margin: 1em auto 2em;
+.song-album {
 	border-radius: 1em;
+}
+.song-album--page {
+	display: block;
+	margin: 1em auto 2em;
+	max-width: 20em;
 }

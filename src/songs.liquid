@@ -27,7 +27,7 @@ permalink: "{{ song.slug }}{{ song.title | slugify }}/"
 </ul>
 {%- endif %}
 
-<img src="{{ albumArtUrl }}" width="640" height="640" alt="Album Art for {{ song.title }}" class="song-album-art">
+<img src="{{ albumArtUrl }}" width="640" height="640" alt="Album Art for {{ song.title }}" class="song-album song-album--page">
 
 <pre>
 {{ song.lyrics }}

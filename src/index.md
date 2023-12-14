@@ -20,7 +20,7 @@ permalink: "{% if lang != 'en' %}/{{ lang }}/{% else %}/{% endif %}"
   {%- if song.data.song.language == lang %}
     <a href="{{ song.url }}">
     {%- if song.data.albumArtUrl %}
-      <img src="{{ song.data.albumArtUrl }}" width="640" height="640" alt="Album Art for {{ song.data.song.title }}">
+      <img src="{{ song.data.albumArtUrl }}" width="640" height="640" alt="Album Art for {{ song.data.song.title }}" class="song-album">
     {%- endif %}
     {{ song.data.song.title }}
     </a>
