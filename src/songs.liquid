@@ -1,22 +1,52 @@
----
-layout: layout.liquid
-pagination:
-  data: songs
-  alias: song
-  size: 1
-  addAllPagesToCollections: true
-  # See `before` in `songs.11tydata.js`
-eleventyComputed:
-  lang: "{{ song.language }}"
-  albumArtUrl: "https://v1.opengraph.11ty.dev/{{ song.urls.Spotify | url_encode }}/opengraph/jpeg/"
-  metadata:
-    title: "Taylor Swift: {{ song.title }}"
-    titleHtml: "<a href='{{ song.slug }}'>Taylor Swift</a> <span>{{ song.title }}</span>"
-    cta:
-      url: "{{ song.slug }}"
-      text: "{{ 'songs' | i18n }}"
-tags: songs
-permalink: "{{ song.slug }}{{ song.title | slugify }}/"
+---node
+// <script>
+const layout = "layout.liquid";
+
+const pagination = {
+	data: "songs",
+	alias: "song",
+	size: 1,
+	addAllPagesToCollections: true,
+	before: function(paginationData, fullData) {
+		let ret = [];
+		let songIndex = 0;
+		for(let songKey in fullData.songs) {
+			let song = fullData.songs[songKey];
+			for(let lang of Object.keys(song)) {
+				if(lang === "metadata") {
+					continue;
+				}
+
+				ret.push({
+					eleventyPaginationGroupNumber: songIndex,
+					language: lang,
+					slug: lang !== "en" ? `/${lang}/` : "/",
+					...song.metadata,
+					...song[lang],
+				});
+			}
+			songIndex++;
+		}
+		return ret;
+	}
+}
+
+const eleventyComputed = {
+	lang: "{{ song.language }}",
+	albumArtUrl: "https://v1.opengraph.11ty.dev/{{ song.urls.Spotify | url_encode }}/opengraph/jpeg/",
+	metadata: {
+		title: "Taylor Swift: {{ song.title }}",
+		titleHtml: "<a href='{{ song.slug }}'>Taylor Swift</a> <span>{{ song.title }}</span>",
+		cta: {
+			url: "{{ song.slug }}",
+			text: "{{ 'songs' | i18n }}",
+		}
+	}
+};
+
+const tags = "songs";
+
+const permalink = "{{ song.slug }}{{ song.title | slugify }}/";
 ---
 <div class="song-album-page">
 {% albumArt song.title, albumArtUrl %}
