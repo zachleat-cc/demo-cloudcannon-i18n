@@ -25,6 +25,7 @@
     "rosetta": "^1.1.0"
   },
   "dependencies": {
+    "@11ty/eleventy-img": "^3.1.8",
     "@11ty/is-land": "^4.0.0",
     "@zachleat/pagefind-search": "^1.0.3",
     "@zachleat/snow-fall": "^1.0.2"
