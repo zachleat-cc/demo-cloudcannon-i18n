@@ -13,7 +13,7 @@ pagination:
 tags: indexes
 permalink: "{% if lang != 'en' %}/{{ lang }}/{% else %}/{% endif %}"
 ---
-## {{ "songs" | i18n }}
+<h2>{{ "songs" | i18n }}</h2>
 
 <div class="song-chooser">
 {%- for song in collections.songs %}
