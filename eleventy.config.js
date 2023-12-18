@@ -28,6 +28,7 @@ module.exports = async function(eleventyConfig) {
 		"./public/*": "/public/",
 		"./node_modules/@11ty/is-land/is-land.js": "/public/is-land.js",
 		"./node_modules/@zachleat/pagefind-search/pagefind-search.js": "/public/pagefind-search.js",
+		"./node_modules/@zachleat/snow-fall/snow-fall.js": "/public/snow-fall.js",
 	});
 
 	// Server

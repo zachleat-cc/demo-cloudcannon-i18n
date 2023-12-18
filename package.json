@@ -19,13 +19,14 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "@11ty/eleventy": "github:11ty/eleventy#main",
+    "@11ty/eleventy": "3.0.0-alpha.2",
     "js-yaml": "^4.1.0",
     "pagefind": "^1.0.4",
     "rosetta": "^1.1.0"
   },
   "dependencies": {
     "@11ty/is-land": "^4.0.0",
-    "@zachleat/pagefind-search": "^1.0.3"
+    "@zachleat/pagefind-search": "^1.0.3",
+    "@zachleat/snow-fall": "^1.0.2"
   }
 }
