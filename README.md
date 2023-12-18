@@ -1,10 +1,18 @@
-## TODO
+# Taylor Swift Super Fan Website (and i18n Demo, I guess)
 
-* Page transitions API
+* [Live demo](https://fluent-reef.cloudvent.net/)
 
-## Cool things
+## Features
 
-* Pagination in songs.liquid combines yaml and javascript template data (for `before`)
-* Dual layer pagination using `before` https://github.com/11ty/eleventy/issues/332
-* Album art from Spotify Open Graph images
-* Automatic locale aware search from Pagefind https://pagefind.app/docs/multilingual/
+* Supports English and Spanish (any number of languages can be added)
+	* Using [Eleventy’s i18n plugin](https://www.11ty.dev/docs/plugins/i18n/)
+	* Using [`rosetta` for string transformation](https://www.npmjs.com/package/rosetta)
+* For-free inter-language page links
+* Translated header, footer, and banner (in a different repo via Site Mounting)
+* For-free [locale aware search from Pagefind](https://pagefind.app/docs/multilingual/)
+* Album art pulled from Spotify Open Graph images
+* Deep links to streaming services
+* Built with Eleventy v3.0
+	* Using `node` front matter in `songs.liquid` (to enable the `before` pagination callback in JavaScript)
+	* Using custom [dual pagination](https://github.com/11ty/eleventy/issues/332) using `before` over both languages and songs.
+* Using seasonally [appropriate `<snow-fall>` web component](https://www.zachleat.com/web/snow-fall/).
