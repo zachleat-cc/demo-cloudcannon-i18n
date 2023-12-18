@@ -44,11 +44,20 @@ module.exports = async function(eleventyConfig) {
 	});
 
 	// Ignores
-	eleventyConfig.ignores.add("src/_schemas/*");
+	eleventyConfig.ignores.add("_schemas/*");
 
 	/* Yaml data */
-	eleventyConfig.addDataExtension("yml, yaml", (contents, filePath) => {
-		return yaml.load(contents)
+	eleventyConfig.addDataExtension("md", (contents, filePath) => {
+		contents = contents.trim();
+
+		if(contents.startsWith("---")) {
+			contents = contents.slice(3);
+		}
+		if(contents.endsWith("---")) {
+			contents = contents.slice(0, -3);
+		}
+
+		return yaml.load(contents.trim());
 	});
 
 	/* Image processing */

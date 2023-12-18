@@ -12,28 +12,42 @@ const pagination = {
 		let songIndex = 0;
 		for(let songKey in fullData.songs) {
 			let song = fullData.songs[songKey];
-			for(let lang of Object.keys(song)) {
-				if(lang === "metadata") {
-					continue;
-				}
 
-				ret.push({
+			for(let lang of fullData.languages) {
+				let pageData = {
 					eleventyPaginationGroupNumber: songIndex,
 					language: lang,
 					slug: lang !== "en" ? `/${lang}/` : "/",
-					...song.metadata,
-					...song[lang],
-				});
+					urls: {},
+				};
+
+				let serviceDisplayNames = {
+					"lastfm": "last.fm",
+					"spotify": "Spotify",
+					"tidal": "Tidal",
+					"youtube": "YouTube",
+				}
+
+				for(let key in song) {
+					if(key.startsWith(`${lang}_`)) {
+						pageData[key.slice(`${lang}_`.length)] = song[key];
+					} else if(key.endsWith("_url")) {
+						pageData.urls[serviceDisplayNames[key.slice(0, -4)]] = song[key];
+					}
+				}
+
+				ret.push(pageData);
 			}
 			songIndex++;
 		}
+
 		return ret;
 	}
 }
 
 const eleventyComputed = {
 	lang: "{{ song.language }}",
-	albumArtUrl: "https://v1.opengraph.11ty.dev/{{ song.urls.Spotify | url_encode }}/opengraph/jpeg/",
+	albumArtUrl: "{% if song.urls.Spotify %}https://v1.opengraph.11ty.dev/{{ song.urls.Spotify | url_encode }}/opengraph/jpeg/{% endif %}",
 	metadata: {
 		title: "Taylor Swift: {{ song.title }}",
 		titleHtml: "<a href='{{ song.slug }}'>Taylor Swift</a> <span>{{ song.title }}</span>",
@@ -61,7 +75,7 @@ const permalink = "{{ song.slug }}{{ song.title | slugify }}/";
 </ul>
 {%- endif %}
 
-<pre>{{ song.lyrics }}</pre>
+<pre>{{ song.lyrics_text }}</pre>
 
 <hr>
 <p><em>{{ "translations" | i18n }} <a href="https://github.com/zachleat-cc/demo-cloudcannon-i18n/issues">{{ "issue" | i18n }}</a></em></p>
