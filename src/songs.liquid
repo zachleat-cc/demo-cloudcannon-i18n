@@ -18,7 +18,9 @@ eleventyComputed:
 tags: songs
 permalink: "{{ song.slug }}{{ song.title | slugify }}/"
 ---
-{% albumArt song.title, albumArtUrl, "song-album--page" %}
+<div class="song-album-page">
+{% albumArt song.title, albumArtUrl %}
+</div>
 
 {%- if song.urls %}
 <ul class="demo-inline demo-mb2">
