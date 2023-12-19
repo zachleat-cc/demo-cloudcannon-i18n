@@ -75,7 +75,6 @@ module.exports = async function(eleventyConfig) {
 	return {
 		dir: {
 			input: "src",
-			data: "_data",
 			includes: "../_includes/"
 		}
 	}
