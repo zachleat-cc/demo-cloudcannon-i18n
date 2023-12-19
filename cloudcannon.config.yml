@@ -6,9 +6,14 @@ collections_config:
     path: _data/songs
     output: false
     name: Song
+    description: ''
     icon: music_note
+    _editables: {}
     _enabled_editors:
       - data
+    _inputs: {}
+    _select_data: {}
+    _structures: {}
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
