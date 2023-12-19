@@ -25,9 +25,6 @@ module.exports = async function(eleventyConfig) {
 		return i18n.t(key, extraData, langOverride || lang);
 	})
 
-	/* CloudCannon-specific ignores */
-	eleventyConfig.ignores.add("_schemas/*");
-
 	/* Markdown front matter as data */
 	eleventyConfig.addDataExtension("md", (contents, filePath) => {
 		contents = contents.trim();
@@ -92,7 +89,6 @@ module.exports = async function(eleventyConfig) {
 	return {
 		dir: {
 			input: "src",
-			data: "../_data",
 		}
 	}
 };
