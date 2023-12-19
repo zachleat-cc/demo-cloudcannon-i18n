@@ -1,9 +1,8 @@
-source: src
 paths:
   uploads: uploads
 collections_config:
   songs:
-    path: songs
+    path: src/songs
     output: false
     filter:
       exclude:
