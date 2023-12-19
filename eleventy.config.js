@@ -23,20 +23,6 @@ module.exports = async function(eleventyConfig) {
 		let extraData = {}; // for later
 		const i18n = rosetta(strs);
 		return i18n.t(key, extraData, langOverride || lang);
-	})
-
-	/* Markdown front matter as data */
-	eleventyConfig.addDataExtension("md", (contents, filePath) => {
-		contents = contents.trim();
-
-		if(contents.startsWith("---")) {
-			contents = contents.slice(3);
-		}
-		if(contents.endsWith("---")) {
-			contents = contents.slice(0, -3);
-		}
-
-		return yaml.load(contents.trim());
 	});
 
 	// Copy

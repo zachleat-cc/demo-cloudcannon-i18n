@@ -15,16 +15,19 @@ collections_config:
     _select_data: {}
     _structures: {}
     disable_add: false
-    disable_add_folder: false
+    disable_add_folder: true
     disable_file_actions: false
     schemas:
       default:
-        path: _includes/schemas/song.md
+        path: _includes/schemas/song.html
         reorder_inputs: true
         hide_extra_inputs: false
         remove_empty_inputs: false
         remove_extra_inputs: true
         icon: notes
+    filter:
+      exclude:
+        - songs.11tydata.js
 _enabled_editors:
   - data
 _inputs: {}
