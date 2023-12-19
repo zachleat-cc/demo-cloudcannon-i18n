@@ -7,7 +7,7 @@ timezone: US/Central
 collections_config:
   songs:
     name: Song
-    path: data/songs
+    path: _data/songs
     output: false
     icon: music_note
     _enabled_editors:
