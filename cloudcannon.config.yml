@@ -1,18 +1,31 @@
 source: src
 paths:
   uploads: uploads
-_enabled_editors:
-  - data
-data_config: {}
-timezone: US/Central
 collections_config:
   songs:
-    name: Song
     path: _data/songs
     output: false
+    name: Song
     icon: music_note
     _enabled_editors:
       - data
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
     schemas:
       default:
         path: _includes/schemas/song.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        icon: notes
+collections_config_override: true
+_enabled_editors:
+  - data
+_inputs: {}
+_select_data: {}
+_structures: {}
+_editables: {}
+data_config: {}
+timezone: US/Central
