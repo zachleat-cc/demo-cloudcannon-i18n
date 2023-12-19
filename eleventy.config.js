@@ -25,6 +25,23 @@ module.exports = async function(eleventyConfig) {
 		return i18n.t(key, extraData, langOverride || lang);
 	})
 
+	/* CloudCannon-specific ignores */
+	eleventyConfig.ignores.add("_schemas/*");
+
+	/* Markdown front matter as data */
+	eleventyConfig.addDataExtension("md", (contents, filePath) => {
+		contents = contents.trim();
+
+		if(contents.startsWith("---")) {
+			contents = contents.slice(3);
+		}
+		if(contents.endsWith("---")) {
+			contents = contents.slice(0, -3);
+		}
+
+		return yaml.load(contents.trim());
+	});
+
 	// Copy
 	eleventyConfig.addPassthroughCopy({
 		"./public/": "/public/",
@@ -41,23 +58,6 @@ module.exports = async function(eleventyConfig) {
 	// Liquid
 	eleventyConfig.setLiquidOptions({
 		jsTruthy: true
-	});
-
-	// Ignores
-	eleventyConfig.ignores.add("_schemas/*");
-
-	/* Yaml data */
-	eleventyConfig.addDataExtension("md", (contents, filePath) => {
-		contents = contents.trim();
-
-		if(contents.startsWith("---")) {
-			contents = contents.slice(3);
-		}
-		if(contents.endsWith("---")) {
-			contents = contents.slice(0, -3);
-		}
-
-		return yaml.load(contents.trim());
 	});
 
 	/* Image processing */

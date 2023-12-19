@@ -16,9 +16,10 @@ data_config: {}
 timezone: US/Central
 collections_config:
   songs:
+    path: _data/songs/
     icon: music_note
     _enabled_editors:
       - data
     schemas:
       default:
-        path: _schemas/site.md
+        path: _schemas/song.md
