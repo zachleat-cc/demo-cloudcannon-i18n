@@ -25,7 +25,6 @@ collections_config:
         remove_empty_inputs: false
         remove_extra_inputs: true
         icon: notes
-collections_config_override: true
 _enabled_editors:
   - data
 _inputs: {}
