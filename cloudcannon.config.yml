@@ -3,7 +3,7 @@ paths:
   uploads: uploads
 collections_config:
   songs:
-    path: _data/songs
+    path: songs
     output: false
     name: Song
     description: ''

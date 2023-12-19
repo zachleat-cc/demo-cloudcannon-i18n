@@ -3,16 +3,14 @@
 const layout = "layout.liquid";
 
 const pagination = {
-	data: "songs",
+	data: "collections.songs",
 	alias: "song",
 	size: 1,
 	addAllPagesToCollections: true,
 	before: function(paginationData, fullData) {
 		let ret = [];
 		let songIndex = 0;
-		for(let songKey in fullData.songs) {
-			let song = fullData.songs[songKey];
-
+		for(let song of paginationData) {
 			for(let lang of fullData.languages) {
 				let pageData = {
 					eleventyPaginationGroupNumber: songIndex,
@@ -28,11 +26,11 @@ const pagination = {
 					"youtube": "YouTube",
 				}
 
-				for(let key in song) {
+				for(let key in song.data) {
 					if(key.startsWith(`${lang}_`)) {
-						pageData[key.slice(`${lang}_`.length)] = song[key];
+						pageData[key.slice(`${lang}_`.length)] = song.data[key];
 					} else if(key.endsWith("_url")) {
-						pageData.urls[serviceDisplayNames[key.slice(0, -4)]] = song[key];
+						pageData.urls[serviceDisplayNames[key.slice(0, -4)]] = song.data[key];
 					}
 				}
 
@@ -58,7 +56,7 @@ const eleventyComputed = {
 	}
 };
 
-const tags = "songs";
+const tags = "songPages";
 
 const permalink = "{{ song.slug }}{{ song.title | slugify }}/";
 ---
