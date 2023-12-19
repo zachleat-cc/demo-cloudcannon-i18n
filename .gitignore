@@ -1,5 +1,5 @@
 _site
 node_modules
 package-lock.json
-src/_includes/marketing-components/
+_includes/marketing-components/
 .cache

@@ -3,7 +3,7 @@ const rosetta = require("rosetta");
 
 const eleventyImage = require("@11ty/eleventy-img");
 
-const siteMountedConfig = require("./src/_includes/marketing-components/eleventySharedConfig.cjs");
+const siteMountedConfig = require("./_includes/marketing-components/eleventySharedConfig.cjs");
 
 const LANGUAGES = ["en", "es"];
 
@@ -89,6 +89,8 @@ module.exports = async function(eleventyConfig) {
 	return {
 		dir: {
 			input: "src",
+			data: "_data",
+			includes: "../_includes/"
 		}
 	}
 };
