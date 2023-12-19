@@ -4,24 +4,40 @@ paths:
 collections_config:
   songs:
     path: songs
-    description: Songs
     output: false
-    schemas:
-      default:
-        path: _includes/schemas/song.html
-    disable_add_folder: true
-    _enabled_editors:
-      - data
     filter:
       exclude:
         - songs.11tydata.js
+    description: Songs
+    icon: notes
+    _enabled_editors:
+      - data
+    disable_add: false
+    disable_add_folder: true
+    disable_file_actions: false
+    schemas:
+      default:
+        path: _includes/schemas/song.html
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        icon: notes
+collection_groups:
+  - heading: Taylor’s Songs
+    collections:
+      - songs
 _enabled_editors:
   - data
 _inputs:
   layout:
+    type: auto
     hidden: true
+    cascade: true
   eleventyExcludeFromCollections:
+    type: auto
     hidden: true
+    cascade: true
 _select_data: {}
 _structures: {}
 _editables: {}
