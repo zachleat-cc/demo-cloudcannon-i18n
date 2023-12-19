@@ -1,10 +1,5 @@
 paths:
   uploads: uploads
-  static: ''
-  collections: ''
-  data: _data
-  layouts: _includes
-  includes: _includes
 _enabled_editors:
   - data
 data_config: {}
