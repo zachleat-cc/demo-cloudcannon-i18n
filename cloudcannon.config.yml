@@ -4,33 +4,24 @@ paths:
 collections_config:
   songs:
     path: songs
+    description: Songs
     output: false
-    name: Song
-    description: ''
-    icon: music_note
-    _editables: {}
-    _enabled_editors:
-      - data
-    _inputs: {}
-    _select_data: {}
-    _structures: {}
-    disable_add: false
-    disable_add_folder: true
-    disable_file_actions: false
     schemas:
       default:
         path: _includes/schemas/song.html
-        reorder_inputs: true
-        hide_extra_inputs: false
-        remove_empty_inputs: false
-        remove_extra_inputs: true
-        icon: notes
+    disable_add_folder: true
+    _enabled_editors:
+      - data
     filter:
       exclude:
         - songs.11tydata.js
 _enabled_editors:
   - data
-_inputs: {}
+_inputs:
+  layout:
+    hidden: true
+  eleventyExcludeFromCollections:
+    hidden: true
 _select_data: {}
 _structures: {}
 _editables: {}
