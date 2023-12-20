@@ -23,6 +23,7 @@ collections_config:
         remove_empty_inputs: false
         remove_extra_inputs: true
         icon: notes
+collections_config_override: true
 collection_groups:
   - heading: Taylor’s Songs
     collections:
