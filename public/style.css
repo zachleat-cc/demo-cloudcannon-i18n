@@ -21,7 +21,17 @@
 	font-size: 1.125em; /* 18px /16 */
 }
 /* Language Chooser */
-/* .language-chooser {} */
+language-hint {
+	--margin-offset: 0.6666666666667em; /* 12px /18 */
+	display: block;
+	padding: .25em var(--margin-offset);
+	margin-left: calc(-1 * var(--margin-offset));
+	margin-right: calc(-1 * var(--margin-offset));
+}
+language-hint.mismatch {
+	background-color: #ffc;
+	font-weight: bold;
+}
 
 /* Song Chooser */
 .song-chooser {

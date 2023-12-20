@@ -8,13 +8,14 @@ metadata:
     <link rel="stylesheet" href="/public/style.css">
     <script type="module" src="/public/is-land.js"></script>
     <script type="module" src="/public/snow-fall.js"></script>
+    <script type="module" src="/public/language-hint.js"></script>
 ---
 <is-land on:media="(prefers-reduced-motion: no-preference)">
 	<snow-fall count="200"></snow-fall>
 </is-land>
 {% assign links = page.url | locale_links %}
-<div class="language-chooser demo-mb2">
-	<div><strong>{{ "languageswap" | i18n }}:</strong></div>
+<language-hint class="language-chooser demo-mb2">
+	{{ "languageswap" | i18n }}:
 	<ul class="demo-inline">
 		{%- for link in links %}
 		{%- unless forloop.first %},{% endunless %}
@@ -23,7 +24,7 @@ metadata:
   	<li><a href="{{link.url}}" lang="{{link.lang}}" hreflang="{{link.lang}}">{{ translatedLanguage }}</a>{% if link.lang != page.lang %} <em>({{ originalLanguage }})</em>	{% endif %}</li>
 		{%- endfor -%}
 	</ul>
-</div>
+</language-hint>
 
 {{ content }}
 
