@@ -27,8 +27,8 @@ const pagination = {
 				}
 
 				for(let key in song.data) {
-					if(key.startsWith(`${lang}_`)) {
-						pageData[key.slice(`${lang}_`.length)] = song.data[key];
+					if(key === lang) {
+						Object.assign(pageData, song.data[key])
 					} else if(key.endsWith("_url")) {
 						pageData.urls[serviceDisplayNames[key.slice(0, -4)]] = song.data[key];
 					}
@@ -73,7 +73,7 @@ const permalink = "{{ song.slug }}{{ song.title | slugify }}/";
 </ul>
 {%- endif %}
 
-<pre>{{ song.lyrics_text }}</pre>
+<pre>{{ song.lyrics }}</pre>
 
 <hr>
 <p><em>{{ "translations" | i18n }} <a href="https://github.com/zachleat-cc/demo-cloudcannon-i18n/issues">{{ "issue" | i18n }}</a></em></p>
