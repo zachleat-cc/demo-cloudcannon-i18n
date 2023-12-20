@@ -15,5 +15,5 @@
 * Deep links to various streaming services
 * Built with Eleventy v3.0
 	* Using `node` front matter in `songs.liquid` (to enable the `before` pagination callback in JavaScript)
-	* Using custom [dual pagination](https://github.com/11ty/eleventy/issues/332) using `before` over both languages and songs.
+	* Using custom [dual pagination](https://github.com/11ty/eleventy/issues/332) with `before` chunking data between languages and songs.
 * Using seasonally [appropriate `<snow-fall>` web component](https://www.zachleat.com/web/snow-fall/).
