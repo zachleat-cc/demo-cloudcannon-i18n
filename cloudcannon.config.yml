@@ -18,7 +18,7 @@ collections_config:
     preview:
       gallery:
         image:
-          - key: albumArtUrl
+          - key: urls.spotify
     schemas:
       default:
         path: _includes/schemas/song.html
