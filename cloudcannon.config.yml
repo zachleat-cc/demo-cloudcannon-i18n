@@ -47,7 +47,7 @@ _inputs:
       preview:
         text: Spanish
   lyrics:
-    type: markdown
+    type: code
   # External streaming urls
   lastfm:
     type: url
