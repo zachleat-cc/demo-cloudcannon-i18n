@@ -21,7 +21,7 @@ metadata:
 		{%- unless forloop.first %},{% endunless %}
 		{%- capture originalLanguage %}{{ "languages." | append: link.lang | i18n: link.lang }}{% endcapture %}
 		{%- capture translatedLanguage %}{{ "languages." | append: link.lang | i18n }}{% endcapture %}
-  	<li><a href="{{link.url}}" lang="{{link.lang}}" hreflang="{{link.lang}}">{{ translatedLanguage }}</a>{% if link.lang != page.lang %} <em>({{ originalLanguage }})</em>	{% endif %}</li>
+  	<li><a href="{{link.url}}" lang="{{link.lang}}" hreflang="{{link.lang}}">{{ translatedLanguage }}{% if link.lang != page.lang %} / {{ originalLanguage }}</a>{% endif %}</li>
 		{%- endfor -%}
 	</ul>
 </language-hint>
