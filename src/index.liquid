@@ -19,9 +19,7 @@ permalink: "{% if lang != 'en' %}/{{ lang }}/{% else %}/{% endif %}"
 {%- for song in collections.songPages %}
   {%- if song.data.song.language == lang %}
     <a href="{{ song.url }}">
-    {%- if song.data.albumArtUrl %}
-      {% albumArt song.data.song.title, song.data.albumArtUrl %}
-    {%- endif %}
+    {% albumArt song.data.song %}
     {{ song.data.song.title }}
     </a>
   {%- endif %}

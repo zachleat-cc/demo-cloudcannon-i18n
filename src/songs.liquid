@@ -30,7 +30,6 @@ const pagination = {
 					if(key === lang) {
 						Object.assign(pageData, song.data[key])
 					} else if(key === "urls") {
-						Object.assign(pageData, song.data[key]);
 						for(let serviceKey in song.data.urls) {
 							pageData.urls[serviceDisplayNames[serviceKey]] = song.data.urls[serviceKey];
 						}
@@ -48,7 +47,6 @@ const pagination = {
 
 const eleventyComputed = {
 	lang: "{{ song.language }}",
-	albumArtUrl: "{% if song.urls.Spotify %}https://v1.opengraph.11ty.dev/{{ song.urls.Spotify | url_encode }}/opengraph/jpeg/{% endif %}",
 	metadata: {
 		title: "Taylor Swift: {{ song.title }}",
 		titleHtml: "<a href='{{ song.slug }}'>Taylor Swift</a> <span>{{ song.title }}</span>",
@@ -64,7 +62,7 @@ const tags = "songPages";
 const permalink = "{{ song.slug }}{{ song.title | slugify }}/";
 ---
 <div class="song-album-page">
-{% albumArt song.title, albumArtUrl %}
+{% albumArt song %}
 </div>
 
 {%- if song.urls %}

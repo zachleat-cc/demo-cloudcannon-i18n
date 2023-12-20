@@ -46,13 +46,13 @@ module.exports = function(eleventyConfig) {
 	});
 
 	/* Image processing */
-	async function optimizeImage(filepath, attrs = {}) {
-		let metadata = await eleventyImage(filepath, {
+	async function optimizeImage(filepath, options = {}, attrs = {}) {
+		let metadata = await eleventyImage(filepath, Object.assign({
 			widths: ["auto"],
 			formats: ["avif", "webp", "jpeg"],
 			outputDir: "./public/img/",
 			urlPath: "/public/img/",
-		});
+		}, options));
 
 		let imageAttributes = Object.assign({
 			loading: "lazy",
@@ -63,9 +63,15 @@ module.exports = function(eleventyConfig) {
 		return eleventyImage.generateHTML(metadata, imageAttributes);
 	}
 
-	eleventyConfig.addShortcode("albumArt", async function(title, url, cls) {
-		return optimizeImage(url, {
-			alt: `Album art for ${title}`,
+	eleventyConfig.addShortcode("albumArt", async function(song, cls) {
+		if(!song?.urls?.Spotify) {
+			return "";
+		}
+
+		let albumArtUrl = `https://v1.opengraph.11ty.dev/${encodeURIComponent(song?.urls?.Spotify)}/opengraph/jpeg/`;
+
+		return optimizeImage(albumArtUrl, {}, {
+			alt: `Album art for ${song.title}`,
 			loading: "eager",
 			class: "song-album" + (cls ? ` ${cls}` : ""),
 		});
