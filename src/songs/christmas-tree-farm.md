@@ -1,5 +1,5 @@
 ---
-english:
+en:
   title: Christmas Tree 🎄 Farm
   lyrics: |
     My winter nights are taken up by static
@@ -69,7 +69,7 @@ english:
     May your every wish comes true
 
     I love you
-spanish:
+es:
   title: Granja de árboles de Navidad 🎄
   lyrics: |
     Mis noches de invierno están ocupadas por la estática.

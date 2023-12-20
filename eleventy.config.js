@@ -7,12 +7,6 @@ const siteMountedConfig = require("./_includes/marketing-components/eleventyShar
 
 const LANGUAGES = ["en", "es"];
 
-const LANGUAGE_KEYS = {
-	"english": "en",
-	"spanish": "es",
-};
-
-
 module.exports = function(eleventyConfig) {
 	eleventyConfig.on("eleventy.beforeConfig", async (eleventyConfig) => {
 		const { EleventyI18nPlugin } = await import("@11ty/eleventy");
@@ -24,7 +18,6 @@ module.exports = function(eleventyConfig) {
 
 	// used on index.md song pages
 	eleventyConfig.addGlobalData("languages", LANGUAGES);
-	eleventyConfig.addGlobalData("languageKeys", LANGUAGE_KEYS);
 
 	eleventyConfig.addFilter("i18n", function (key, langOverride) {
 		let lang = this.page?.lang || this.ctx?.page?.lang || this.context?.environments?.page?.lang || LANGUAGES[0];

@@ -36,10 +36,16 @@ collection_groups:
 _enabled_editors:
   - data
 _inputs:
-  english:
+  en:
     type: object
-  spanish:
+    options:
+      preview:
+        text: English
+  es:
     type: object
+    options:
+      preview:
+        text: Spanish
   lyrics:
     type: markdown
   # External streaming urls
