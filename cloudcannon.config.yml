@@ -36,7 +36,7 @@ _inputs:
     options:
       preview:
         text: English
-  en:
+  es:
     type: object
     options:
       preview:
