@@ -24,10 +24,10 @@ const pagination = {
 					"spotify": "Spotify",
 					"tidal": "Tidal",
 					"youtube": "YouTube",
-				}
+				};
 
 				for(let key in song.data) {
-					if(key === lang) {
+					if(fullData.languageKeys[key] === lang) {
 						Object.assign(pageData, song.data[key])
 					} else if(key === "urls") {
 						for(let serviceKey in song.data.urls) {

@@ -15,8 +15,9 @@ collections_config:
     disable_add: false
     disable_add_folder: true
     disable_file_actions: false
-    # preview:
-    #   gallery:
+    preview:
+      gallery:
+        text: " "
     #     image:
     #       - key: urls.spotify
     schemas:
@@ -35,16 +36,6 @@ collection_groups:
 _enabled_editors:
   - data
 _inputs:
-  en:
-    type: object
-    options:
-      preview:
-        text: English
-  es:
-    type: object
-    options:
-      preview:
-        text: Spanish
   lyrics:
     type: markdown
   # External streaming urls

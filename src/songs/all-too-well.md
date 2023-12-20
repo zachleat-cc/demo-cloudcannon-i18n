@@ -1,5 +1,5 @@
 ---
-en:
+english:
   title: All Too Well (Taylor’s Version)
   lyrics: |
     I walked through the door with you
@@ -66,7 +66,7 @@ en:
     Wind in my hair, you were there, you remember it all
     Down the stairs, you were there, you remember it all
     It was rare, I was there, I remember it all too well
-es:
+spanish:
   title: Todo muy bien (versión de Taylor)
   lyrics: |
     Entré por la puerta contigo
