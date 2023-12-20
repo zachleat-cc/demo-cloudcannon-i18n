@@ -29,8 +29,11 @@ const pagination = {
 				for(let key in song.data) {
 					if(key === lang) {
 						Object.assign(pageData, song.data[key])
-					} else if(key.endsWith("_url")) {
-						pageData.urls[serviceDisplayNames[key.slice(0, -4)]] = song.data[key];
+					} else if(key === "urls") {
+						Object.assign(pageData, song.data[key]);
+						for(let serviceKey in song.data.urls) {
+							pageData.urls[serviceDisplayNames[serviceKey]] = song.data.urls[serviceKey];
+						}
 					}
 				}
 

@@ -31,6 +31,27 @@ collection_groups:
 _enabled_editors:
   - data
 _inputs:
+  en:
+    type: object
+    options:
+      preview:
+        text: English
+  en:
+    type: object
+    options:
+      preview:
+        text: Spanish
+  lyrics:
+    type: markdown
+  # External streaming urls
+  lastfm:
+    type: url
+  spotify:
+    type: url
+  tidal:
+    type: url
+  youtube:
+    type: url
   layout:
     type: auto
     hidden: true

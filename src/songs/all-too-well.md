@@ -133,8 +133,9 @@ es:
     Viento en mi cabello, estuviste ahí, lo recuerdas todo
     Bajando las escaleras, estabas allí, lo recuerdas todo.
     Fue raro, estuve allí, lo recuerdo muy bien.
-lastfm_url: https://www.last.fm/music/Taylor+Swift/_/All+Too+Well+(10+Minute+Version)+(Taylor%27s+Version)+(From+the+Vault)
-spotify_url: https://open.spotify.com/track/5enxwA8aAbwZbf5qCHORXi
-tidal_url: https://tidal.com/browse/track/204609730
-youtube_url: https://www.youtube.com/watch?v=sRxrwjOtIag
+urls:
+  lastfm: https://www.last.fm/music/Taylor+Swift/_/All+Too+Well+(10+Minute+Version)+(Taylor%27s+Version)+(From+the+Vault)
+  spotify: https://open.spotify.com/track/5enxwA8aAbwZbf5qCHORXi
+  tidal: https://tidal.com/browse/track/204609730
+  youtube: https://www.youtube.com/watch?v=sRxrwjOtIag
 ---
