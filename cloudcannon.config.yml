@@ -15,10 +15,10 @@ collections_config:
     disable_add: false
     disable_add_folder: true
     disable_file_actions: false
-    preview:
-      gallery:
-        image:
-          - key: urls.spotify
+    # preview:
+    #   gallery:
+    #     image:
+    #       - key: urls.spotify
     schemas:
       default:
         path: _includes/schemas/song.html
