@@ -3,7 +3,7 @@ paths:
   uploads: uploads
 collections_config:
   songs:
-    path: src/songs
+    path: songs
     output: false
     filter:
       exclude:
