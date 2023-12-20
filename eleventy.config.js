@@ -7,15 +7,17 @@ const siteMountedConfig = require("./_includes/marketing-components/eleventyShar
 
 const LANGUAGES = ["en", "es"];
 
-module.exports = async function(eleventyConfig) {
-	const { EleventyI18nPlugin } = await import("@11ty/eleventy");
+module.exports = function(eleventyConfig) {
+	eleventyConfig.on("eleventy.beforeConfig", async (eleventyConfig) => {
+		const { EleventyI18nPlugin } = await import("@11ty/eleventy");
+
+		eleventyConfig.addPlugin(EleventyI18nPlugin, {
+			defaultLanguage: LANGUAGES[0],
+		});
+	});
 
 	// used on index.md song pages
 	eleventyConfig.addGlobalData("languages", LANGUAGES);
-
-	eleventyConfig.addPlugin(EleventyI18nPlugin, {
-		defaultLanguage: LANGUAGES[0],
-	});
 
 	eleventyConfig.addFilter("i18n", function (key, langOverride) {
 		let lang = this.page?.lang || this.ctx?.page?.lang || this.context?.environments?.page?.lang || LANGUAGES[0];

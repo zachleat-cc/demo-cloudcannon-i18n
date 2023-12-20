@@ -1,3 +1,4 @@
+source: src
 paths:
   uploads: uploads
 collections_config:
