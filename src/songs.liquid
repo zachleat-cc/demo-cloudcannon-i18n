@@ -1,17 +1,15 @@
 ---node
 // <script>
-const layout = "layout.liquid";
-
 const pagination = {
 	data: "collections.songs",
 	alias: "song",
 	size: 1,
 	addAllPagesToCollections: true,
-	before: function(paginationData, fullData) {
+	before: function(paginationData, {languages, streamingServiceNames}) {
 		let ret = [];
 		let songIndex = 0;
 		for(let song of paginationData) {
-			for(let lang of fullData.languages) {
+			for(let lang of languages) {
 				let pageData = {
 					eleventyPaginationGroupNumber: songIndex,
 					language: lang,
@@ -19,19 +17,12 @@ const pagination = {
 					urls: {},
 				};
 
-				let serviceDisplayNames = {
-					"lastfm": "last.fm",
-					"spotify": "Spotify",
-					"tidal": "Tidal",
-					"youtube": "YouTube",
-				}
-
 				for(let key in song.data) {
 					if(key === lang) {
 						Object.assign(pageData, song.data[key])
 					} else if(key === "urls") {
 						for(let serviceKey in song.data.urls) {
-							pageData.urls[serviceDisplayNames[serviceKey]] = song.data.urls[serviceKey];
+							pageData.urls[streamingServiceNames[serviceKey]] = song.data.urls[serviceKey];
 						}
 					}
 				}
@@ -45,6 +36,12 @@ const pagination = {
 	}
 }
 
+const layout = "layout.liquid";
+
+const tags = "songPages";
+
+const permalink = "{{ song.slug }}{{ song.title | slugify }}/";
+
 const eleventyComputed = {
 	lang: "{{ song.language }}",
 	metadata: {
@@ -56,10 +53,6 @@ const eleventyComputed = {
 		}
 	}
 };
-
-const tags = "songPages";
-
-const permalink = "{{ song.slug }}{{ song.title | slugify }}/";
 ---
 <div class="song-album-page">
 {% albumArt song %}

@@ -32,6 +32,13 @@ module.exports = function(eleventyConfig) {
 
 	// used on index.md song pages
 	eleventyConfig.addGlobalData("languages", LANGUAGES);
+	eleventyConfig.addGlobalData("streamingServiceNames", {
+		"lastfm": "last.fm",
+		"spotify": "Spotify",
+		"tidal": "Tidal",
+		"youtube": "YouTube",
+	});
+
 
 	eleventyConfig.addFilter("i18n", function (key, langOverride) {
 		let lang = this.page?.lang || this.ctx?.page?.lang || this.context?.environments?.page?.lang || LANGUAGES[0];

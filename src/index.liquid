@@ -1,16 +1,16 @@
 ---
-layout: layout.liquid
-eleventyComputed:
-  metadata:
-    title: "Taylor Swift {{ 'site.title' | i18n }}"
-    titleHtml: "<b>Taylor Swift</b> {{ 'site.title' | i18n }}"
-    cta: false
 pagination:
   data: languages
   alias: lang
   size: 1
   addAllPagesToCollections: true
+layout: layout.liquid
 tags: indexes
+eleventyComputed:
+  metadata:
+    title: "Taylor Swift {{ 'site.title' | i18n }}"
+    titleHtml: "<b>Taylor Swift</b> {{ 'site.title' | i18n }}"
+    cta: false
 permalink: "{% if lang != 'en' %}/{{ lang }}/{% else %}/{% endif %}"
 ---
 <h2>{{ "songs" | i18n }}</h2>
