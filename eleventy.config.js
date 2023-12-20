@@ -1,11 +1,25 @@
 const yaml = require("js-yaml");
 const rosetta = require("rosetta");
-
 const eleventyImage = require("@11ty/eleventy-img");
 
-const siteMountedConfig = require("./_includes/marketing-components/eleventySharedConfig.cjs");
-
 const LANGUAGES = ["en", "es"];
+
+async function optimizeImage(filepath, options = {}, attrs = {}) {
+	let metadata = await eleventyImage(filepath, Object.assign({
+		widths: ["auto"],
+		formats: ["avif", "webp", "jpeg"],
+		outputDir: "./public/img/",
+		urlPath: "/public/img/",
+	}, options));
+
+	let imageAttributes = Object.assign({
+		loading: "lazy",
+		decoding: "async",
+	}, attrs);
+
+	// You bet we throw an error on a missing alt (alt="" works okay)
+	return eleventyImage.generateHTML(metadata, imageAttributes);
+}
 
 module.exports = function(eleventyConfig) {
 	eleventyConfig.on("eleventy.beforeConfig", async (eleventyConfig) => {
@@ -27,7 +41,22 @@ module.exports = function(eleventyConfig) {
 		return i18n.t(key, extraData, langOverride || lang);
 	});
 
-	// Copy
+	// Image processing
+	eleventyConfig.addShortcode("albumArt", async function(song, cls) {
+		if(!song?.urls?.Spotify) {
+			return "";
+		}
+
+		let albumArtUrl = `https://v1.opengraph.11ty.dev/${encodeURIComponent(song?.urls?.Spotify)}/opengraph/jpeg/`;
+
+		return optimizeImage(albumArtUrl, {}, {
+			alt: `Album art for ${song.title}`,
+			loading: "eager",
+			class: "song-album" + (cls ? ` ${cls}` : ""),
+		});
+	});
+
+	// Assets
 	eleventyConfig.addPassthroughCopy({
 		"./public/": "/public/",
 		"./node_modules/@11ty/is-land/is-land.js": "/public/is-land.js",
@@ -45,39 +74,8 @@ module.exports = function(eleventyConfig) {
 		jsTruthy: true
 	});
 
-	/* Image processing */
-	async function optimizeImage(filepath, options = {}, attrs = {}) {
-		let metadata = await eleventyImage(filepath, Object.assign({
-			widths: ["auto"],
-			formats: ["avif", "webp", "jpeg"],
-			outputDir: "./public/img/",
-			urlPath: "/public/img/",
-		}, options));
-
-		let imageAttributes = Object.assign({
-			loading: "lazy",
-			decoding: "async",
-		}, attrs);
-
-		// You bet we throw an error on a missing alt (alt="" works okay)
-		return eleventyImage.generateHTML(metadata, imageAttributes);
-	}
-
-	eleventyConfig.addShortcode("albumArt", async function(song, cls) {
-		if(!song?.urls?.Spotify) {
-			return "";
-		}
-
-		let albumArtUrl = `https://v1.opengraph.11ty.dev/${encodeURIComponent(song?.urls?.Spotify)}/opengraph/jpeg/`;
-
-		return optimizeImage(albumArtUrl, {}, {
-			alt: `Album art for ${song.title}`,
-			loading: "eager",
-			class: "song-album" + (cls ? ` ${cls}` : ""),
-		});
-	});
-
 	// Site Mounting
+	const siteMountedConfig = require("./_includes/marketing-components/eleventySharedConfig.cjs");
 	eleventyConfig.addPlugin(siteMountedConfig);
 
 	return {
