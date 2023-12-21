@@ -2,9 +2,10 @@ const rosetta = require("rosetta");
 const eleventyImage = require("@11ty/eleventy-img");
 
 const LANGUAGES = ["en", "es"];
+const DEFAULT_LANGUAGE = "en";
 
 const i18n = rosetta();
-i18n.locale(LANGUAGES[0]);
+i18n.locale(DEFAULT_LANGUAGE);
 for(let lang of LANGUAGES) {
 	i18n.set(lang, require(`./_includes/i18n/${lang}.js`));
 }
@@ -34,7 +35,7 @@ module.exports = function(eleventyConfig) {
 		const { EleventyI18nPlugin } = await import("@11ty/eleventy");
 
 		eleventyConfig.addPlugin(EleventyI18nPlugin, {
-			defaultLanguage: LANGUAGES[0],
+			defaultLanguage: DEFAULT_LANGUAGE,
 		});
 	});
 
