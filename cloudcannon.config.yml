@@ -1,6 +1,4 @@
 source: src
-paths:
-  uploads: uploads
 collections_config:
   songs:
     path: songs
@@ -9,17 +7,13 @@ collections_config:
       exclude:
         - songs.11tydata.js
     description: Songs
-    icon: notes
+    icon: music_note
     _enabled_editors:
       - data
-    disable_add: false
     disable_add_folder: true
-    disable_file_actions: false
     preview:
       gallery:
         text: " "
-    #     image:
-    #       - key: urls.spotify
     schemas:
       default:
         path: _includes/schemas/song.html
@@ -27,7 +21,7 @@ collections_config:
         hide_extra_inputs: false
         remove_empty_inputs: false
         remove_extra_inputs: true
-        icon: notes
+        icon: music_note
 collections_config_override: true
 _enabled_editors:
   - data
@@ -44,7 +38,6 @@ _inputs:
         text: Spanish
   lyrics:
     type: code
-  # External streaming urls
   lastfm:
     type: url
   spotify:
