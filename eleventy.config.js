@@ -1,6 +1,14 @@
 const rosetta = require("rosetta");
 const eleventyImage = require("@11ty/eleventy-img");
 
+const LANGUAGES = ["en", "es"];
+
+const i18n = rosetta();
+i18n.locale(LANGUAGES[0]);
+for(let lang of LANGUAGES) {
+	i18n.set(lang, require(`./_includes/i18n/${lang}.js`));
+}
+
 async function optimizeImage(filepath, options = {}, attrs = {}) {
 	let metadata = await eleventyImage(filepath, Object.assign({
 		widths: ["auto"],
@@ -19,8 +27,6 @@ async function optimizeImage(filepath, options = {}, attrs = {}) {
 }
 
 module.exports = function(eleventyConfig) {
-	const LANGUAGES = ["en", "es"];
-
 	// used on index.md song pages
 	eleventyConfig.addGlobalData("languages", LANGUAGES);
 
@@ -32,12 +38,9 @@ module.exports = function(eleventyConfig) {
 		});
 	});
 
-	eleventyConfig.addFilter("i18n", function (key, langOverride) {
-		let lang = this.page?.lang || this.ctx?.page?.lang || this.context?.environments?.page?.lang || LANGUAGES[0];
-		let strs = this.ctx?.i18n || this.context?.environments?.i18n || {};
-		let extraData = {}; // for later
-		const i18n = rosetta(strs);
-		return i18n.t(key, extraData, langOverride || lang);
+	eleventyConfig.addFilter("i18n", function(key, langOverride) {
+		let lang = langOverride || this.page?.lang || this.ctx?.page?.lang || this.context?.environments?.page?.lang;
+		return i18n.t(key, {}, lang);
 	});
 
 	// Image processing
@@ -47,9 +50,11 @@ module.exports = function(eleventyConfig) {
 		}
 
 		let albumArtUrl = `https://v1.opengraph.11ty.dev/${encodeURIComponent(song?.urls?.Spotify)}/opengraph/jpeg/`;
+		let lang = this.page?.lang || this.ctx?.page?.lang || this.context?.environments?.page?.lang;
+		let alt = i18n.t("albumart", { title: song.title }, lang);
 
 		return optimizeImage(albumArtUrl, {}, {
-			alt: `Album art for ${song.title}`,
+			alt,
 			loading: "eager",
 			class: "song-album" + (cls ? ` ${cls}` : ""),
 		});
