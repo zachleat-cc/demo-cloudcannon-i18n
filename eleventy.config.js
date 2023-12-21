@@ -1,4 +1,3 @@
-const yaml = require("js-yaml");
 const rosetta = require("rosetta");
 const eleventyImage = require("@11ty/eleventy-img");
 
