@@ -1,8 +1,6 @@
 const rosetta = require("rosetta");
 const eleventyImage = require("@11ty/eleventy-img");
 
-const LANGUAGES = ["en", "es"];
-
 async function optimizeImage(filepath, options = {}, attrs = {}) {
 	let metadata = await eleventyImage(filepath, Object.assign({
 		widths: ["auto"],
@@ -21,6 +19,11 @@ async function optimizeImage(filepath, options = {}, attrs = {}) {
 }
 
 module.exports = function(eleventyConfig) {
+	const LANGUAGES = ["en", "es"];
+
+	// used on index.md song pages
+	eleventyConfig.addGlobalData("languages", LANGUAGES);
+
 	eleventyConfig.on("eleventy.beforeConfig", async (eleventyConfig) => {
 		const { EleventyI18nPlugin } = await import("@11ty/eleventy");
 
@@ -28,16 +31,6 @@ module.exports = function(eleventyConfig) {
 			defaultLanguage: LANGUAGES[0],
 		});
 	});
-
-	// used on index.md song pages
-	eleventyConfig.addGlobalData("languages", LANGUAGES);
-	eleventyConfig.addGlobalData("streamingServiceNames", {
-		"lastfm": "last.fm",
-		"spotify": "Spotify",
-		"tidal": "Tidal",
-		"youtube": "YouTube",
-	});
-
 
 	eleventyConfig.addFilter("i18n", function (key, langOverride) {
 		let lang = this.page?.lang || this.ctx?.page?.lang || this.context?.environments?.page?.lang || LANGUAGES[0];
